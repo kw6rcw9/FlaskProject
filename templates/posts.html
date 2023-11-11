@@ -7,14 +7,19 @@ All articles
 {% block body %}
 <div class="container mt-5">
     <h1>All articles</h1>
-    {% for el in articles %}
-    <div class="alert alert-info">
-        <h2>{{el.title}}</h2>
-        <p> {{el.intro}}</p>
-        <p><b>Date: {{el.date.date()}}</b></p>
-        <a href="/posts/{{el.id}}" class="btn btn-warning">More</a>
-    </div>
-    {% endfor %}
+    {% if article|length > 1 %}
+
+        {% for el in articles %}
+        <div class="alert alert-info">
+            <h2>{{el.title}}</h2>
+            <p> {{el.intro}}</p>
+            <p><b>Date: {{el.date.date()}}</b></p>
+            <a href="/posts/{{el.id}}" class="btn btn-warning">More</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No posts here</p>
+    {% endif %}
 </div>
 
 {% endblock %}
